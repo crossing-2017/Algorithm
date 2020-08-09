@@ -12,7 +12,7 @@ public class ArrayStackDemo {
     //测试一下ArrayStack 是否正确
     //先创建一个ArrayStack对象->表示栈
     ArrayStack stack = new ArrayStack(4);
-    String key = "";
+    String key;
     boolean loop = true; //控制是否退出菜单
     Scanner scanner = new Scanner(System.in);
 
@@ -58,7 +58,7 @@ public class ArrayStackDemo {
 class ArrayStack {
 
   private final int maxSize; // 栈的大小
-  private int[] stack; // 数组，数组模拟栈，数据就放在该数组
+  private final int[] stack; // 数组，数组模拟栈，数据就放在该数组
   private int top = -1;// top表示栈顶，初始化为-1
 
 
