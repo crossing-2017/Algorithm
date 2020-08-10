@@ -45,14 +45,19 @@ public class SelectSort {
     //在推导的过程，我们发现了规律，因此，可以使用for来解决
     //选择排序时间复杂度是 O(n^2)
 
-    int temp;
     for (int i = 0; i < arr.length - 1; i++) {
+      int minIndex = i;
+      int min = arr[i];
       for (int j = i + 1; j < arr.length; j++) {
-        if (arr[i] > arr[j]) {
-          temp = arr[i];
-          arr[i] = arr[j];
-          arr[j] = temp;
+        if (min > arr[j]) { // 说明假定的最小值，并不是最小
+          min = arr[j]; // 重置min
+          minIndex = j; // 重置minIndex
         }
+      }
+      // 将最小值，放在arr[0], 即交换
+      if (minIndex != i) {
+        arr[minIndex] = arr[i];
+        arr[i] = min;
       }
     }
   }
