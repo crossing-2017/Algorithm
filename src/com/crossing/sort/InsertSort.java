@@ -22,7 +22,7 @@ public class InsertSort {
 
     System.out.println("插入排序前");
     Date beforeSortTime = new Date();
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
     String beforeSortTimeStr = simpleDateFormat.format(beforeSortTime);
     System.out.println("排序前的时间是=" + beforeSortTimeStr);
 
@@ -38,16 +38,14 @@ public class InsertSort {
   //插入排序
   public static void insertSort(int[] arr) {
 
-    int i, j, insertNote;// 要插入的数据
-
-    for (i = 1; i < arr.length; i++) {  // 从数组的第二个元素开始循环将数组中的元素插入
-      insertNote = arr[i];  // 设置数组中的第2个元素为第一次循环要插入的数据
-      j = i - 1;
-      while (j >= 0 && insertNote < arr[j]) {
+    for (int i = 1; i < arr.length; i++) {  // 从数组的第二个元素开始循环将数组中的元素插入
+      int current = arr[i];  // 设置数组中的第2个元素为第一次循环要插入的数据
+      int j = i - 1;
+      while (j >= 0 && current < arr[j]) {
         arr[j + 1] = arr[j];  // 如果要插入的元素小于第j个元素,就将第j个元素向后移动
         j--;
       }
-      arr[j + 1] = insertNote;  // 直到要插入的元素不小于第j个元素,将insertNote插入到数组中
+      arr[j + 1] = current;  // 直到要插入的元素不小于第j个元素,将insertNote插入到数组中
     }
   }
 }

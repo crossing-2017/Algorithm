@@ -25,7 +25,7 @@ public class ShellSort {
     }
 
     Date beforeSortTime = new Date();
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
     String beforeSortTimeStr = simpleDateFormat.format(beforeSortTime);
     System.out.println("排序前的时间是=" + beforeSortTimeStr);
 
@@ -38,7 +38,6 @@ public class ShellSort {
 
 //    System.out.println("排序后");
 //    System.out.println(Arrays.toString(arr));
-
   }
 
   // 使用逐步推导的方式来编写希尔排序
@@ -68,18 +67,17 @@ public class ShellSort {
 
     // 增量gap, 并逐步的缩小增量
     for (int gap = arr.length / 2; gap > 0; gap /= 2) {
-      int i, j, insertNode;
       // 从第gap个元素，逐个对其所在的组进行直接插入排序
-      for (i = gap; i < arr.length; i++) {
-        insertNode = arr[i];
-        j = i - gap;
-        while (j >= 0 && insertNode < arr[j]) {
+      for (int i = gap; i < arr.length; i++) {
+        int current = arr[i];
+        int j = i - gap;
+        while (j >= 0 && current < arr[j]) {
           //移动
           arr[j + gap] = arr[j];
           j -= gap;
         }
         //当退出while后，就给temp找到插入的位置
-        arr[j + gap] = insertNode;
+        arr[j + gap] = current;
       }
     }
   }
